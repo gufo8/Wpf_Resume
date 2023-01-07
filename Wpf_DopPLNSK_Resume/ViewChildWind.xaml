@@ -1,0 +1,21 @@
+﻿<Window x:Class="Wpf_DopPLNSK_Resume.ViewChildWind"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_DopPLNSK_Resume"
+        mc:Ignorable="d"
+        Title="View Resume" Height="580" Width="500">
+    <Window.Resources>
+        <local:VwMdMainResume x:Key="VMR"/>
+    </Window.Resources>
+    <FlowDocumentScrollViewer Name="docViewer" IsToolBarVisible="True" >
+        <FlowDocument Name="flowDoc">
+            <BlockUIContainer>
+                <Label Content="RESUME" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold"/>
+            </BlockUIContainer>
+            
+        </FlowDocument>
+    </FlowDocumentScrollViewer>
+
+</Window>

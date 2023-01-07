@@ -1,0 +1,159 @@
+﻿<Window x:Class="Wpf_DopPLNSK_Resume.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_DopPLNSK_Resume"
+        mc:Ignorable="d"
+        Title="RESUME" Height="700" Width="500" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local:VwMdMainResume x:Key="VMR"/>
+    </Window.Resources>
+    <ScrollViewer>
+        <Grid DataContext="{StaticResource VMR}"> 
+            <DockPanel>
+
+                <Grid DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Name="Combo" Margin="0,0" Background="White" Width="348" Height="25" 
+                              SelectedIndex="{Binding ComboSelectedIndex}" ItemsSource="{Binding SeekersFullName}"/>
+                    <Button x:Name="BtnViewResume" Margin="3" Grid.Column="1" FontSize="15" 
+                            Content="View resume" Click="ViewRsm" IsEnabled="{Binding IsViewRsmBtnEnable}"/>
+                </Grid>
+
+                <StackPanel>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="97*"/>
+                            <ColumnDefinition Width="46*"/>
+                            <ColumnDefinition Width="341*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="10"></RowDefinition>
+                            <RowDefinition MinHeight="10"></RowDefinition>
+                            <RowDefinition MinHeight="10"></RowDefinition>
+                            <RowDefinition MinHeight="10"></RowDefinition>
+                            <RowDefinition MinHeight="10"></RowDefinition>
+                            <RowDefinition MinHeight="10"></RowDefinition>
+                            <RowDefinition MinHeight="10"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Name="LblSrnm" Grid.Row="0" Margin="1,1,1,1" FontSize="12" Content="Surname:"/>
+                        <Label Name="LblNm" Grid.Row="1" Margin="1,1,1,1" FontSize="12" Content="Name:"/>
+                        <Label Name="LblMdlNm" Grid.Row="2" Margin="1,1,1,1" FontSize="12" Content="Middle name:"/>
+                        <Label Name="LblAg" Grid.Row="3" Margin="1,1,1,1" FontSize="12" Content="Age:"/>
+                        <Label Name="LblPhn" Grid.Row="4" Margin="1,1,1,1" FontSize="12" Content="Phone:"/>
+                        <Label Name="LblAdrs" Grid.Row="5" Margin="1,1,1,1" FontSize="12" Content="Address:"/>
+                        <Label Name="LblEMl" Grid.Row="6" Margin="1,1,1,1" FontSize="12" Content="e-mail:"/>
+
+                        <TextBox Name="TxtBxSrnm" Grid.Row="0" Grid.Column="1" Margin="2,2,2,2" Foreground="{Binding ColorBgrndTxt, Mode=TwoWay}" Text="{Binding SurnameVM, Mode=TwoWay}" Grid.ColumnSpan="2"/>
+                        <TextBox Name="TxtBxNm" Grid.Row="1" Grid.Column="1" Margin="2,2,2,2" Foreground="{Binding ColorBgrndTxt, Mode=TwoWay}" Text="{Binding NameVM, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                        <TextBox Name="TxtBxMdlNm" Grid.Row="2" Grid.Column="1" Margin="2,2,2,2" Foreground="{Binding ColorBgrndTxt, Mode=TwoWay}" Text="{Binding MiddleNameVM, Mode=TwoWay}" Grid.ColumnSpan="2"/>
+                        <TextBox Name="TxtBxAg" Grid.Row="3" Grid.Column="1" Margin="2,2,2,2" Foreground="{Binding ColorBgrndTxt, Mode=TwoWay}" Text="{Binding AgeVM, Mode=TwoWay}" Grid.ColumnSpan="2"/>
+                        <TextBox Name="TxtBxPhn" Grid.Row="4" Grid.Column="1" Margin="2,2,2,2" Foreground="{Binding ColorBgrndTxt, Mode=TwoWay}" Text="{Binding PhoneVM, Mode=TwoWay}" Grid.ColumnSpan="2"/>
+                        <TextBox Name="TxtBxAdrs" Grid.Row="5" Grid.Column="1" Margin="2,2,2,2" Foreground="{Binding ColorBgrndTxt, Mode=TwoWay}" Text="{Binding AddressVM, Mode=TwoWay}" Grid.ColumnSpan="2"/>
+                        <TextBox Name="TxtBxEMl" Grid.Row="6" Grid.Column="1" Margin="2,2,2,2" Foreground="{Binding ColorBgrndTxt, Mode=TwoWay}" Text="{Binding EMailVM, Mode=TwoWay}" Grid.ColumnSpan="2"/>
+                    </Grid>
+
+                    <StackPanel Margin="3">
+                        <Button FontSize="12" Content="Knowledge of foreign languages:"/>
+                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="3">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,1" EndPoint="0,0">
+                                    <GradientStop Color="Yellow" Offset="0" />
+                                    <GradientStop Color="YellowGreen" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <WrapPanel>
+                                <CheckBox Name="ChckBxUkrn" Margin="5" Content="Ukrainian" FontSize="12" BorderThickness="2" IsChecked="{Binding UkrainianVM}"/>
+                                <CheckBox Name="ChckBxRsn" Margin="5" Content="Russian" FontSize="12" BorderThickness="2" IsChecked="{Binding RussianVM}"/>
+                                <CheckBox Name="ChckEngl" Margin="5" Content="English" FontSize="12" BorderThickness="2" IsChecked="{Binding EnglishVM}"/>
+                                <CheckBox Name="ChckBxChns" Margin="5" Content="Chinese" FontSize="12" BorderThickness="2" IsChecked="{Binding ChineeseVM}"/>
+                                <CheckBox Name="ChckBxSpn" Margin="5" Content="Spanish" FontSize="12" BorderThickness="2" IsChecked="{Binding SpanishVM}"/>
+                            </WrapPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <Label Margin="2" FontSize="12" FontWeight="Bold" Content="Knowledge of information technology" HorizontalAlignment="Center"/>
+
+                    <StackPanel Margin="3">
+                        <Button FontSize="12" Content="Programming language:"/>
+                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="3">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,1" EndPoint="0,0">
+                                    <GradientStop Color="Yellow" Offset="0" />
+                                    <GradientStop Color="YellowGreen" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <WrapPanel>
+                                <CheckBox Name="ChckBxCShrpNt" Margin="5" Content="C#/.Net" FontSize="12" BorderThickness="2" IsChecked="{Binding CSharpVM}"/>
+                                <CheckBox Name="ChckBxCpls" Margin="5" Content="C++" FontSize="12" BorderThickness="2" IsChecked="{Binding CPlusVM}"/>
+                                <CheckBox Name="ChckBxJv" Margin="5" Content="Java" FontSize="12" BorderThickness="2" IsChecked="{Binding JavaVM}"/>
+                                <CheckBox Name="ChckBxRb" Margin="5" Content="Ruby" FontSize="12" BorderThickness="2" IsChecked="{Binding RubyVM}"/>
+                                <CheckBox Name="ChckBxPhp" Margin="5" Content="PHP" FontSize="12" BorderThickness="2" IsChecked="{Binding PHPVM}"/>
+                                <CheckBox Name="ChckBxPthn" Margin="5" Content="Python" FontSize="12" BorderThickness="2" IsChecked="{Binding PythonVM}"/>
+                                <CheckBox Name="ChckBxJvScrt" Margin="5" Content="JavaScript" FontSize="12" BorderThickness="2" IsChecked="{Binding JavaScriptVM}"/>
+                            </WrapPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <Label Margin="3"></Label>
+                    <StackPanel Margin="3">
+                        <Button FontSize="12" Content="Database:"/>
+                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="3">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,1" EndPoint="0,0">
+                                    <GradientStop Color="Yellow" Offset="0" />
+                                    <GradientStop Color="YellowGreen" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <WrapPanel>
+                                <CheckBox Name="ChckBxOrcl" Margin="5" Content="Oracle" FontSize="12" BorderThickness="2" IsChecked="{Binding OracleVM}"/>
+                                <CheckBox Name="ChckBxMsSqlSrv" Margin="5" Content="MS SQL Server" FontSize="12" BorderThickness="2" IsChecked="{Binding MSSQLServerVM}"/>
+                                <CheckBox Name="ChckBxMSql" Margin="5" Content="MySQL" FontSize="12" BorderThickness="2" IsChecked="{Binding MySQLVM}"/>
+                                <CheckBox Name="ChckBxFrbrd" Margin="5" Content="Firebird" FontSize="12" BorderThickness="2" IsChecked="{Binding FirebirdVM}"/>
+                                <CheckBox Name="ChckBxMSAcss" Margin="5" Content="Microsoft Access" FontSize="12" BorderThickness="2" IsChecked="{Binding MicrosoftAccessVM}"/>
+                                <CheckBox Name="ChckBxSqLt" Margin="5" Content="SQLite" FontSize="12" BorderThickness="2" IsChecked="{Binding SQLiteVM}"/>
+                            </WrapPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <Label Margin="3"></Label>
+                    <StackPanel Margin="3">
+                        <Button FontSize="12" Content="Automation system:"/>
+                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="3">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,1" EndPoint="0,0">
+                                    <GradientStop Color="Yellow" Offset="0" />
+                                    <GradientStop Color="YellowGreen" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <WrapPanel>
+                                <CheckBox Name="ChckBxErp" Margin="5" Content="ERP" FontSize="12" BorderThickness="2" IsChecked="{Binding ERPVM}"/>
+                                <CheckBox Name="ChckBxSap" Margin="5" Content="SAP" FontSize="12" BorderThickness="2" IsChecked="{Binding SAPVM}"/>
+                                <CheckBox Name="ChckBxBI" Margin="5" Content="BI" FontSize="12" BorderThickness="2" IsChecked="{Binding BIVM}"/>
+                            </WrapPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{StaticResource VMR}">
+                        <Button Name="BtnAdd" Margin="7" Height="35" Width="70" FontSize="12" Content="Add" 
+                                ToolTip="Click the 'Add' button before enter data in the fields, then click 'Apply'" Command="{Binding AddBtnClick}"/>
+                        <Button Name="BtnApply" Margin="7" Height="35" Width="70" FontSize="12" Content="Apply" 
+                                ToolTip="Apply adding the entered data or editing the selected resume" Command="{Binding ApplyBtnClick}"/>
+                        <Button Name="BtnEdit" Margin="7" Height="35" Width="70" FontSize="12" Content="Edit" 
+                                ToolTip="Editing the selected resume. Then click 'Apply'" Command="{Binding EditBtnClick}"/>
+                        <Button Name="BtnClear" Margin="7" Height="35" Width="70" FontSize="12" Content="Delete" 
+                                ToolTip="Delete selected resume" Click="Message" Command="{Binding DeleteBtnClick}"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+            </DockPanel>
+
+        </Grid>
+    </ScrollViewer>
+</Window>

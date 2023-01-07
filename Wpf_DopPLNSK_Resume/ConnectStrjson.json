@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=.;Database=SeekersRSMWPF;Trusted_Connection=True;"
+  }
+}
